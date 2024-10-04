@@ -1,40 +1,50 @@
 class KubectlTopologySkew < Formula
   desc "kubectl plugin to display pod count and skew per topology"
-  version "0.2.0"
-  on_macos do
-    on_arm do
-      url "https://github.com/watawuwu/kubectl-topology-skew/releases/download/v0.2.0/kubectl-topology-skew-aarch64-apple-darwin.tar.xz"
-      sha256 "6b88f227b1cfb33fabf4de1b0f8083a959e82572423a04619ee8791de8ed3f13"
+  homepage "https://github.com/watawuwu/kubectl-topology-skew"
+  version "0.2.3"
+  if OS.mac?
+    if Hardware::CPU.arm?
+      url "https://github.com/watawuwu/kubectl-topology-skew/releases/download/v0.2.3/kubectl-topology-skew-aarch64-apple-darwin.tar.xz"
+      sha256 "632857fd9bd9f2f52a06b6780adbe5d82bf699d9fc661c162435ee73f2cf3f2b"
     end
-    on_intel do
-      url "https://github.com/watawuwu/kubectl-topology-skew/releases/download/v0.2.0/kubectl-topology-skew-x86_64-apple-darwin.tar.xz"
-      sha256 "daa216929260b49a714af57a2df0bdd07b878afa258f5cdcf47c0a639cb61a09"
-    end
-  end
-  on_linux do
-    on_intel do
-      url "https://github.com/watawuwu/kubectl-topology-skew/releases/download/v0.2.0/kubectl-topology-skew-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "2db3341ffb392fc2773ba0d19149b87ec670e24e2b77191358de9099480d7ae6"
+    if Hardware::CPU.intel?
+      url "https://github.com/watawuwu/kubectl-topology-skew/releases/download/v0.2.3/kubectl-topology-skew-x86_64-apple-darwin.tar.xz"
+      sha256 "13c50f191b62ea24484fccbd4f813b8bb3bd48db988c3a71efe54dfe6a1468e4"
     end
   end
-  license "MIT OR Apache-2.0"
+  if OS.linux? && Hardware::CPU.intel?
+    url "https://github.com/watawuwu/kubectl-topology-skew/releases/download/v0.2.3/kubectl-topology-skew-x86_64-unknown-linux-gnu.tar.xz"
+    sha256 "afff1abb06d708b3498233933d8bef8eab27e5a941c038025066dc0991ad0900"
+  end
+  license any_of: ["MIT", "Apache-2.0"]
+
+  BINARY_ALIASES = {
+    "aarch64-apple-darwin":     {},
+    "x86_64-apple-darwin":      {},
+    "x86_64-unknown-linux-gnu": {},
+  }.freeze
+
+  def target_triple
+    cpu = Hardware::CPU.arm? ? "aarch64" : "x86_64"
+    os = OS.mac? ? "apple-darwin" : "unknown-linux-gnu"
+
+    "#{cpu}-#{os}"
+  end
+
+  def install_binary_aliases!
+    BINARY_ALIASES[target_triple.to_sym].each do |source, dests|
+      dests.each do |dest|
+        bin.install_symlink bin/source.to_s => dest
+      end
+    end
+  end
 
   def install
-    on_macos do
-      on_arm do
-        bin.install "kubectl-topology_skew"
-      end
-    end
-    on_macos do
-      on_intel do
-        bin.install "kubectl-topology_skew"
-      end
-    end
-    on_linux do
-      on_intel do
-        bin.install "kubectl-topology_skew"
-      end
-    end
+    bin.install "kubectl-topology_skew" if OS.mac? && Hardware::CPU.arm?
+    bin.install "kubectl-topology_skew" if OS.mac? && Hardware::CPU.intel?
+    bin.install "kubectl-topology_skew" if OS.linux? && Hardware::CPU.intel?
+
+    install_binary_aliases!
 
     # Homebrew will automatically install these, so we don't need to do that
     doc_files = Dir["README.*", "readme.*", "LICENSE", "LICENSE.*", "CHANGELOG.*"]
@@ -42,6 +52,6 @@ class KubectlTopologySkew < Formula
 
     # Install any leftover files in pkgshare; these are probably config or
     # sample files.
-    pkgshare.install *leftover_contents unless leftover_contents.empty?
+    pkgshare.install(*leftover_contents) unless leftover_contents.empty?
   end
 end
