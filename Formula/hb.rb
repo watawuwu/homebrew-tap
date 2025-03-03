@@ -1,25 +1,25 @@
 class Hb < Formula
   desc "HTTP Benchmark Tool"
   homepage "https://github.com/watawuwu/hb"
-  version "0.6.3"
+  version "0.6.6"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/watawuwu/hb/releases/download/hb-v0.6.3/hb-aarch64-apple-darwin.tar.xz"
-      sha256 "cd9498a3d121d45578639e7e85c1d16b1f9c9d42e7fc805b18189573f2b70990"
+      url "https://github.com/watawuwu/hb/releases/download/hb-v0.6.6/hb-aarch64-apple-darwin.tar.xz"
+      sha256 "513645f4d5d0770ab2fe20131d5059d006d2eedaa33262a2f8ec8c0a0c5006c7"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/watawuwu/hb/releases/download/hb-v0.6.3/hb-x86_64-apple-darwin.tar.xz"
-      sha256 "98e1ca65401cd7e058e05d4fd4310450aef652f9af0e5691ae5554391152858e"
+      url "https://github.com/watawuwu/hb/releases/download/hb-v0.6.6/hb-x86_64-apple-darwin.tar.xz"
+      sha256 "52780866feed0208e8ae855a2c74f8bc780c36ab177991cafec2d913d5fc7b40"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/watawuwu/hb/releases/download/hb-v0.6.3/hb-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "479490a61bdaa66f0192c17b045ed2c4d32397aedf44f18635760322ad3cb378"
+      url "https://github.com/watawuwu/hb/releases/download/hb-v0.6.6/hb-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "a9622bcabe0210971c656ed91474d4b1b577e125972a4a49e0cba4ff42afcb17"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/watawuwu/hb/releases/download/hb-v0.6.3/hb-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "a0d9168c3a00991867f0bd19896b19ade774e89f9d30987da9c1f71f79df0530"
+      url "https://github.com/watawuwu/hb/releases/download/hb-v0.6.6/hb-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "e20c9accc8df41573b54240739da7e5d3cf86d1727c44cd321550e5cb2d1f008"
     end
   end
   license any_of: ["MIT", "Apache-2.0"]
