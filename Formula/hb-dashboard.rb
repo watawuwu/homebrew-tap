@@ -1,25 +1,25 @@
 class HbDashboard < Formula
   desc "HTTP Benchmark Tool"
   homepage "https://github.com/watawuwu/hb"
-  version "0.1.2"
+  version "0.1.3"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.2/hb-dashboard-aarch64-apple-darwin.tar.xz"
-      sha256 "07aeb5fd4d4a22cef85ed9eeb4d6d21ec5c7e915c80c6b2b9250bddc02d72805"
+      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.3/hb-dashboard-aarch64-apple-darwin.tar.xz"
+      sha256 "f1bce68afed9c3c39c47673dd03cfdc4aeb8f9488dd873e9e40e73539cd9937b"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.2/hb-dashboard-x86_64-apple-darwin.tar.xz"
-      sha256 "cb8271a1ac4b2b2430072d819947c6c3121eec59412e62e82bc3af5cd26de953"
+      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.3/hb-dashboard-x86_64-apple-darwin.tar.xz"
+      sha256 "6c8b11271563e9ae3fe0617a79db714b27ac6743caf7498d22d060cfea53c696"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.2/hb-dashboard-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "46950ca670380a795fa1ae99714d1f1b1737a8a1e1a169dec4320b741df7678d"
+      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.3/hb-dashboard-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "7697be06ecd29bbe7b0b1d1b0ebfc1188f0f03647441e76e02230ce3f3b9ef7e"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.2/hb-dashboard-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "f2a3456bbaad961ad7cf258090f8449d506f7b525677ab9353a0f6827e61a325"
+      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.3/hb-dashboard-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "cf2ad37d3178f03e7111ac58596c511bcc37655d611c98aff6f58b49e98143ae"
     end
   end
   license any_of: ["MIT", "Apache-2.0"]
