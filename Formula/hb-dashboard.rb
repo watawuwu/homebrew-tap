@@ -1,25 +1,25 @@
 class HbDashboard < Formula
-  desc "HTTP Benchmark Tool"
+  desc "HTTP Benchmark Tool Dashboard"
   homepage "https://github.com/watawuwu/hb"
-  version "0.1.3"
+  version "0.1.4"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.3/hb-dashboard-aarch64-apple-darwin.tar.xz"
-      sha256 "f1bce68afed9c3c39c47673dd03cfdc4aeb8f9488dd873e9e40e73539cd9937b"
+      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.4/hb-dashboard-aarch64-apple-darwin.tar.xz"
+      sha256 "41f0e0657b4c5b4e6f291fea502a48894200889b8ed0830c8f9b6abd46baa341"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.3/hb-dashboard-x86_64-apple-darwin.tar.xz"
-      sha256 "6c8b11271563e9ae3fe0617a79db714b27ac6743caf7498d22d060cfea53c696"
+      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.4/hb-dashboard-x86_64-apple-darwin.tar.xz"
+      sha256 "9e008cdeea55e60b7e87234d429e66b1ea2170e9d39f94934674a9b8a1369bb8"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.3/hb-dashboard-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "7697be06ecd29bbe7b0b1d1b0ebfc1188f0f03647441e76e02230ce3f3b9ef7e"
+      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.4/hb-dashboard-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "6740a5955675efe18e3d08ad74deb82d7b35c349d204a8e1269284d242c39f97"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.3/hb-dashboard-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "cf2ad37d3178f03e7111ac58596c511bcc37655d611c98aff6f58b49e98143ae"
+      url "https://github.com/watawuwu/hb/releases/download/hb-dashboard-v0.1.4/hb-dashboard-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "ff985f69c6648458556ef56340b95b2ac572219b4ba8860ecb60e9bfd84bf1f3"
     end
   end
   license any_of: ["MIT", "Apache-2.0"]
